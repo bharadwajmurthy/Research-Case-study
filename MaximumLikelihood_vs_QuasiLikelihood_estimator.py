@@ -1,4 +1,3 @@
-```Python
 from scipy.stats import lognorm
 import matplotlib.pyplot as plt
 # Parameters for the true log-normal model (mu and sigma of the underlying normal distribution)
@@ -9,8 +8,10 @@ true_lognormal_sigma = 0.5  # Smaller sigma to make the skewness more noticeable
 lognormal_data = np.random.lognormal(true_lognormal_mu, true_lognormal_sigma, 1000)
 
 # MLE assuming normal distribution
-mle_result_normal = minimize(negative_log_likelihood, [np.mean(lognormal_data), np.std(lognormal_data)],
+mle_result_normal = minimize(lambda params: negative_log_likelihood(params, lognormal_data), 
+                             [np.mean(lognormal_data), np.std(lognormal_data)], 
                              bounds=[(-np.inf, np.inf), (0.001, np.inf)])
+
 mle_normal_mu, mle_normal_sigma = mle_result_normal.x
 
 # QLE using median and IQR (as a proxy for a robust estimation method)
@@ -53,5 +54,3 @@ plt.ylabel('Sigma Estimate')
 plt.legend()
 plt.grid(True)
 plt.show()
-
-```
