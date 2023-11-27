@@ -1,7 +1,6 @@
-
-```python
 from sklearn.mixture import GaussianMixture
-
+import numpy as np
+import matplotlib.pyplot as plt
 # Parameters for the mixture model
 mu1, sigma1 = -2, 0.5  # Parameters for the first normal distribution
 mu2, sigma2 = 2, 1.5   # Parameters for the second normal distribution
@@ -60,4 +59,3 @@ plt.show()
 
 # Return the estimates for comparison
 (ple_means, np.sqrt(ple_variances)), (qle_mean, np.sqrt(qle_variance))
-```
