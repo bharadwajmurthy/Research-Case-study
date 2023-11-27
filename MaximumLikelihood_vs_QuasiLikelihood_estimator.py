@@ -1,4 +1,3 @@
-
 ```Python
 import matplotlib.pyplot as plt
 
